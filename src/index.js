@@ -3,7 +3,7 @@ const WebSocket = require('./web-socket')
 
 const port = process.env.PORT || 8443
 const server = new WebServer({port})
-const socket = new WebSocket(server)
+// const socket = new WebSocket(server)
 
 server.start()
-socket.start()
+// socket.start()
