@@ -151,7 +151,7 @@ class Streamer {
   }
 
   answer () {
-    this.gotStream(this.stream)
+    this.connect()
 
     console.log('-- answer: Sending answer to peer.');
     this.pc.createAnswer().then(

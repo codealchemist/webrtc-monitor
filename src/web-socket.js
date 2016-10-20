@@ -18,14 +18,6 @@ class WebSocket {
     this.channels = {}
     this.server = server || https.createServer(this.credentials)
     this.io = io(this.server);
-
-    // Heroku won't actually allow us to use WebSockets
-    // so we have to setup polling instead.
-    // https://devcenter.heroku.com/articles/using-socket-io-with-node-js-on-heroku
-    // this.io.configure(function () {
-    //   this.io.set("transports", ["xhr-polling"]);
-    //   this.io.set("polling duration", 10);
-    // });
   }
 
   start () {
