@@ -1,0 +1,36 @@
+{
+  "name": "webrtc-monitor",
+  "version": "1.0.0",
+  "description": "Remote audio/video monitoring in the browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "start-dist": "dist=true node src/index.js",
+    "build": "gulp build"
+  },
+  "author": {
+    "name": "Alberto Miranda",
+    "email": "bert.js@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "socket.io": "^1.5.0",
+    "websocket-over-nodejs": "0.0.2"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.16.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-concat": "^2.6.0",
+    "gulp-if": "^2.0.1",
+    "gulp-load-plugins": "^1.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sequence": "^0.4.6",
+    "gulp-uglify": "^2.0.0",
+    "gulp-useref": "^3.1.2"
+  }
+}

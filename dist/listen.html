@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>WebRTC Monitor</title>
+
+    <link rel="stylesheet" href="css/listen.bundle.css">
+  </head>
+  <body>
+    <h1>WebRTC Monitor</h1>
+    <div class="buttons tr">
+      <!-- <span id="reloadStreamer" class="icon button" title="Reload Streamer">♻</span> -->
+      <i id="reloadStreamer" class="fa fa-refresh icon button" title="Reload Streamer"></i>
+      <i id="toggleAudio" class="fa fa-volume-up icon button" title="Toggle Audio"></i>
+    </div>
+
+    <video autoplay></video>
+
+    <script src="//webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script src="js/listen.bundle.js"></script>
+  </body>
+</html>
