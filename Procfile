@@ -1,1 +1,1 @@
-web: dist=true node src/index.js
+web: dist=false node src/index.js
