@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const http = require('http')
 const https = require('https')
 const express = require('express')
 
@@ -19,7 +20,8 @@ class WebServer {
     this.app.use(express.static(this.contentPath))
     console.log('-- static path:', this.contentPath)
 
-    this.server = https.createServer(this.credentials, this.app)
+    // this.server = https.createServer(this.credentials, this.app)
+    this.server = http.createServer(this.app)
   }
 
   getServer () {
