@@ -1,7 +1,8 @@
 const WebServer = require('./web-server')
 const WebSocket = require('./web-socket')
 
-const server = new WebServer()
+const port = process.env.PORT || 443
+const server = new WebServer({port})
 const socket = new WebSocket(server)
 
 server.start()
