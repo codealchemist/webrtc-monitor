@@ -40,6 +40,7 @@ class WebServer {
     })
 
     this.app.get('/', function (req, res) {
+      console.log('-- serve index:', `${contentPath}/index.html`)
       res.sendFile(`${contentPath}/index.html`)
     })
 
