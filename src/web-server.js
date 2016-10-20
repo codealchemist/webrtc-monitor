@@ -5,7 +5,7 @@ const express = require('express')
 
 class WebServer {
   constructor (params) {
-    let {port=8443, credentials} = params || {}
+    let {port=443, credentials} = params || {}
     this.port = port
     this.credentials = credentials || {
       key: fs.readFileSync(`${__dirname}/../cert/privatekey.pem`, 'utf8'),
