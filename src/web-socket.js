@@ -23,16 +23,11 @@ class WebSocket {
   start () {
     if (!this.hasExternalServer) this.server.listen(this.port);
     this.setEvents()
-    console.log(`-- WEB SOCKET started @ http://localhost:${this.port}`)
+    console.log(`-- WEB SOCKET started @ https://localhost:${this.port}`)
   }
 
   setEvents () {
     this.io.on('connection', (socket) => {
-      // setInterval(() => {
-      //   console.log('-- sent HELO')
-      //   socket.emit('message', 'HELO')
-      // }, 2000)
-
       socket.on('error', function (error) {
         console.log('-- SOCKET ERROR:', error);
       });
