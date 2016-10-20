@@ -89,7 +89,7 @@ class Listener {
     try {
       this.pc = new RTCPeerConnection(null);
       this.pc.onicecandidate = (event) => this.onIceCandidate(event);
-      this.pc.onaddstream = (evnet) => this.onRemoteStreamAdded(event);
+      this.pc.ontrack = (evnet) => this.onRemoteStreamAdded(event);
       this.pc.onremovestream = (event) => this.onRemoteStreamRemoved(event);
       console.log('Created RTCPeerConnnection');
     } catch (e) {
