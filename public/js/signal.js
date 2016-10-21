@@ -1,10 +1,11 @@
 'use strict';
 
 class Signal {
-  constructor () {
+  constructor ({uuid}) {
     this.host = `${location.protocol}//${location.host}`
     this.isChannelReady = false
     this.socket = null
+    this.uuid = uuid
 
     // set valid events
     this.validEvents = [
@@ -54,36 +55,41 @@ class Signal {
     room = room || 'default'
     console.log(`[ signal ]--> set room name: "${room}"`)
 
-    this.socket.emit('create', room);
-    console.log(`[ signal ]--> creating room "${room}"`);
+    this.socket.emit('create', room)
+    console.log(`[ signal ]--> creating room "${room}"`)
   }
 
   setEvents() {
-    this.socket.on('created', function(room) {
-      console.log(`[ signal ]--> created room "${room}"`);
-    });
+    this.socket.on('connect', () => {
+      console.log(`[ signal ]--> connected; enter room ${this.uuid}`)
+      this.socket.emit('room', this.uuid)
+    })
 
-    this.socket.on('full', function(room) {
-      console.log(`[ signal ]--> room "${room}" is full`);
-    });
+    this.socket.on('created', (room) => {
+      console.log(`[ signal ]--> created room "${room}"`)
+    })
 
-    this.socket.on('join', function (room){
-      console.log(`[ signal ]--> Another peer made a request to join room "${room}"`);
-      console.log(`[ signal ]--> This peer is the initiator of room "${room}"`);
-      this.isChannelReady = true;
-    });
+    this.socket.on('full', (room) => {
+      console.log(`[ signal ]--> room "${room}" is full`)
+    })
+
+    this.socket.on('join', (room) => {
+      console.log(`[ signal ]--> Another peer made a request to join room "${room}"`)
+      console.log(`[ signal ]--> This peer is the initiator of room "${room}"`)
+      this.isChannelReady = true
+    })
 
     this.socket.on('joined', function(room) {
-      console.log('[ signal ]--> joined: ' + room);
-      this.isChannelReady = true;
-    });
+      console.log('[ signal ]--> joined: ' + room)
+      this.isChannelReady = true
+    })
 
     this.socket.on('log', function(array) {
-      console.log.apply(console, array);
-    });
+      console.log.apply(console, array)
+    })
 
     this.socket.on('error', function (error) {
-      console.log('[ signal ]--> SOCKET ERROR:', error);
+      console.log('[ signal ]--> SOCKET ERROR:', error)
     });
 
     this.socket.on('message', (message) => this.onMessage(message))
@@ -97,11 +103,11 @@ class Signal {
     this.listeners[message.type].map((listener) => listener(message))
   }
 
-  on(event, callback) {
-    if (!event in this.listeners) throw new Error(`ERROR: invalid event: ${event}`)
+  on(eventName, callback) {
+    if (!this.validEvents.includes(eventName)) throw new Error(`ERROR: invalid event: ${eventName}`)
 
     // add listener
-    this.listeners[event].push(callback)
+    this.listeners[eventName].push(callback)
   }
 
   send(message) {

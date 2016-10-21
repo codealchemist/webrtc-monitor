@@ -28,26 +28,37 @@ class WebSocket {
 
   setEvents () {
     this.io.on('connection', (socket) => {
-      socket.on('error', function (error) {
+      let clientsCount = this.io.engine.clientsCount
+      console.log(`-- client connected | total ${clientsCount}`)
+
+      socket.on('room', (room) => {
+        socket.join(room)
+        socket.room = room
+        console.log(`-- JOINED ROOM ${room}`)
+      })
+
+      socket.on('error', (error) => {
         console.log('-- SOCKET ERROR:', error);
-      });
+      })
 
       console.log('-- web socket client connected')
-      socket.on('event', this.onClientEvent);
-      socket.on('disconnect', this.onClientDisconnect);
+      // socket.on('event', () => this.onClientEvent())
+      socket.on('disconnect', () => this.onClientDisconnect());
       socket.on('message', (message) => {
-        console.log('-- client message:', message);
-        socket.broadcast.emit('message', message);
-      });
-    });
+        // console.log('-- client message:', message)
+        console.log('-- send message to room:', socket.room)
+        socket.to(socket.room).emit('message', message)
+      })
+    })
   }
 
   onClientEvent (data) {
-    console.log('-- client event:', data)
+    // console.log('-- client event:', data)
   }
 
   onClientDisconnect () {
-    console.log('-- client disconnected')
+    let clientsCount = this.io.engine.clientsCount
+    console.log(`-- client disconnected | total ${clientsCount}`)
   }
 }
 

@@ -1,7 +1,9 @@
 'use strict';
 
-// const $video = document.querySelector('video')
-const signal = new Signal()
+// get stream uuid
+const uuid = location.pathname.replace('/stream/', '')
+
+const signal = new Signal({uuid})
 const stream = new Streamer({signal})
 
 signal.start()
