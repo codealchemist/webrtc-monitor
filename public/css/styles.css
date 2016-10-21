@@ -1,10 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
+:focus {
+  outline: none;
+}
+
 body {
   background: black;
   color: #444;
   font-family: 'Ubuntu', sans-serif;
   font-size: 12px;
+  width: 100%;
+  overflow: hidden;
 }
 
 h1 {
@@ -68,4 +74,30 @@ video {
 
 .button.active {
   color: #aaa;
+}
+
+.big-input {
+  width: 50%;
+  height: 50px;
+  border: 0;
+  padding: 10px;
+  font: 18px sans-serif;
+  z-index: 10;
+}
+
+.rounded {
+  border-radius: 5px;
+}
+
+.abs-center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.hidden {
+  display: none;
 }

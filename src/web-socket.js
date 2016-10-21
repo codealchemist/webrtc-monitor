@@ -34,7 +34,7 @@ class WebSocket {
       socket.on('room', (room) => {
         socket.join(room)
         socket.room = room
-        console.log(`-- JOINED ROOM ${room}`)
+        console.log(`-- JOINED ROOM "${room}"`)
       })
 
       socket.on('error', (error) => {
@@ -46,7 +46,7 @@ class WebSocket {
       socket.on('disconnect', () => this.onClientDisconnect());
       socket.on('message', (message) => {
         // console.log('-- client message:', message)
-        console.log('-- send message to room:', socket.room)
+        console.log(`-- send message to room: "${socket.room}"`)
         socket.to(socket.room).emit('message', message)
       })
     })

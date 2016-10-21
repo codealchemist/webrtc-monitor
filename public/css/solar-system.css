@@ -1,361 +1,193 @@
-.center {
+@keyframes spinsun {
+  0% { transform: rotate(0); }
+  100%   { transform: rotate(-360deg); }
+}
+@keyframes shadow {
+  0% { background-position: 130% 0%; }
+  33%{ background-position: 50% 0%; }
+  55% { background-position: 0% 0%; }
+  80%{ background-position: -50% 0%; }
+  100%{ background-position: -50% 0%; }
+}
+@keyframes orbitmercury {
+  0% { z-index:2; transform: rotateY(0); }
+  49% { z-index:2; }
+  50% { z-index:-2; }
+  99% { z-index:-2; }
+  100%   { z-index:2; transform: rotateY(360deg); }
+}
+@keyframes orbitvenus {
+  0% { z-index:3; transform: rotateY(0); }
+  49% { z-index:3; }
+  50% { z-index:-3; }
+  99% { z-index:-3; }
+  100%   { z-index:3; transform: rotateY(360deg); }
+}
+@keyframes orbitearth {
+  0% { z-index:4; transform: rotateY(0); }
+  49% {z-index:4;}
+  50% {z-index:-4;}
+  99% {z-index:-4;}
+  100%   { z-index:4; transform: rotateY(360deg);}
+}
+@keyframes orbitmars {
+  0% { z-index:5; transform: rotateY(0); }
+  49% { z-index:5; }
+  50% { z-index:-5; }
+  99% { z-index:-5; }
+  100%   { z-index:5; transform: rotateY(360deg); }
+}
+@keyframes orbitjupiter {
+  0% { z-index:6; transform: rotateY(270); }
+  49% { z-index:6; }
+  50% { z-index:-6; }
+  99% { z-index:-6; }
+  100%   { z-index:6; transform: rotateY(360deg); }
+}
+@keyframes orbitsaturn {
+  0% { z-index:7; transform: rotateY(270); }
+  49% { z-index:7; }
+  50% { z-index:-7; }
+  99% { z-index:-7; }
+  100%   { z-index:7; transform: rotateY(360deg); }
+}
+/* Keep planet image flat */
+@keyframes anti-spin {
+  from { transform: rotateY(0); }
+  to   { transform: rotateY(-360deg); }
+}
+@keyframes anti-spin-rings {
+  from { transform: rotateY(0) rotateX(73deg); }
+  to   { transform: rotateY(-360deg) rotateX(73deg); }
+}
+
+/* scene wrapper */
+.wrapper{
+  position:relative;
+  margin: 0 auto;
+  display:block;
+  margin-top: 200px;
+  perspective: 1000px;
+    perspective-origin: 60% 50%;
+  transform: rotate(-10deg);
+
+}
+.wrapper > div {
+  position: relative;
+  margin: 0 auto;
+  transform-style: preserve-3d;
+  height: 0px;
+}
+.sun {
+  width: 250px;
   position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
-  width: 1000px;
+  top: 0px;
+  z-index: 1;
+  height: 125px !important;
 }
-
-/* Solar System Styles */
-ul.solarsystem {
-    margin: 0;
-    padding: 0;
-    position: relative;
-    height: 640px;
-    list-style: none;
-    -webkit-transition: all 0.09s ease-in;
-    -moz-transition: all 0.09s ease-in;
-    -o-transition: all 0.09s ease-in;
-    transition: all 0.09s ease-in;
-    overflow: hidden;
+.sun .star {
+  width: 250px;
+  height: 250px;
+  background: url(http://www.waynedunkley.com/img/solar_system/sun.png) no-repeat;
+  background-size: cover;
+  border-radius: 250px;
+  margin: 0 auto;
+  animation: spinsun 40s infinite linear;
 }
-ul.solarsystem li {
-    text-indent: -9999px;
-    display: block;
-    position: absolute;
-    border: 2px solid #394057;
-/*    opacity: 0.7;*/
+.planet {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  animation-iteration-count: infinite;
+  overflow:hidden;
 }
-ul.solarsystem li span {
-    display: block;
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+.shadow {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  background: transparent url(http://www.waynedunkley.com/img/solar_system/shadow.png) 0% 0% no-repeat;
+  background-size: cover;
+  border-radius: 100%;
 }
-ul.solarsystem li.active {
-    border-color: #aa4200;
+.mercury {
+  position: absolute;
+  width: 400px;
+  z-index:2;
+  animation: orbitmercury 12s infinite linear;
+  top: -7.5px; /*half of planets height to keep orbits in line*/
 }
-ul.solarsystem li.active.sun,
-ul.solarsystem li.active span {
-    -webkit-transform: scale(1.3);
-    -moz-transform: scale(1.3);
-    -o-transform: scale(1.3);
-    transform: scale(1.3);
+.mercury .planet {
+  width:15px;
+  height:15px;
+  background-image: url(http://www.waynedunkley.com/img/solar_system/mercury.png);
+  animation: anti-spin 12s infinite linear;
 }
-ul.solarsystem li.active.sun span,
-ul.solarsystem li.active.earth .moon {
-    border: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
+.mercury .shadow {
+  animation: shadow 12s infinite linear;
 }
-ul.solarsystem li.sun {
-    width: 40px;
-    height: 40px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
-    background: #fc3;
-    background-image: -webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        color-stop(0.22, rgb(204,153,0)),
-        color-stop(1, rgb(255,219,112))
-    );
-    background-image: -moz-linear-gradient(
-        center bottom,
-        rgb(204,153,0) 22%,
-        rgb(255,219,112) 100%
-    );
-    top: 302px;
-    left: 462px;
-    border: none;
-    -webkit-box-shadow: 0 0 50px #c90;
-    -moz-box-shadow: 0 0 50px #c90;
-    box-shadow: 0 0 50px #c90;
-    z-index: 100;
-    -webkit-transition: all 0.2s ease-in;
-    -moz-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-    transition: all 0.2s ease-in;
+.venus {
+  position: absolute;
+  width: 506px;
+  z-index:3;
+  animation: orbitvenus 15s infinite linear;
+  top: -19px;
 }
-ul.solarsystem li.sun span {
-    width: 60px;
-    height: 60px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    border-radius: 30px;
+.venus .planet {
+  width:38px;
+  height:38px;
+  background-image: url(http://www.waynedunkley.com/img/solar_system/venus.png);
+  animation: anti-spin 15s infinite linear;
 }
-ul.solarsystem li.mercury {
-    width: 100px;
-    height: 100px;
-    -webkit-border-radius: 52px;
-    -moz-border-radius: 52px;
-    border-radius: 52px;
-    top: 270px;
-    left: 430px;
-    z-index: 99;
+.venus .shadow {
+  animation: shadow 15s infinite linear;
 }
-ul.solarsystem li.mercury span {
-    background: #b6bac5;
-    top: 10px;
-    left: 10px;
+.earth {
+  position: absolute;
+  width: 610px;
+  z-index:4;
+  animation: orbitearth 20s infinite linear;
+  top: -20px;
 }
-ul.solarsystem li.venus {
-    width: 160px;
-    height: 160px;
-    -webkit-border-radius: 82px;
-    -moz-border-radius: 82px;
-    border-radius: 82px;
-    top: 240px;
-    left: 400px;
-    z-index: 98;
+.earth .planet {
+  width:40px;
+  height:40px;
+  background-image: url(http://www.waynedunkley.com/img/solar_system/earth.png?v=2);
+  animation: anti-spin 20s infinite linear;
 }
-ul.solarsystem li.venus span {
-    background: #bf8639;
-    top: 118px;
-    left: 5px;
+.earth .shadow {
+  animation: shadow 20s infinite linear;
 }
-ul.solarsystem li.earth {
-    width: 220px;
-    height: 220px;
-    -webkit-border-radius: 112px;
-    -moz-border-radius: 112px;
-    border-radius: 112px;
-    top: 210px;
-    left: 370px;
-    z-index: 97;
+.mars {
+  position: absolute;
+  width: 706px;
+  z-index:5;
+  animation: orbitmars 30s infinite linear;
+  top: -11px;
 }
-ul.solarsystem li.earth span {
-    background: #06c;
-    top: 56px;
-    left: 5px;
+.mars .planet {
+  width:22px;
+  height:22px;
+  background-image: url(http://www.waynedunkley.com/img/solar_system/mars.png);
+  animation: anti-spin 30s infinite linear;
 }
-ul.solarsystem li.earth span.moon {
-    width: 4px;
-    height: 4px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-    background: #ccc;
-    top: 12px;
-    left: 12px;
+.mars .shadow {
+  animation: shadow 30s infinite linear;
 }
-ul.solarsystem li.mars {
-    width: 280px;
-    height: 280px;
-    -webkit-border-radius: 142px;
-    -moz-border-radius: 142px;
-    border-radius: 142px;
-    top: 180px;
-    left: 340px;
-    z-index: 96;
+.jupiter {
+  position: absolute;
+  width: 1100px;
+  z-index:6;
+  animation: orbitjupiter 50s infinite linear;
+  top: -64px;
 }
-ul.solarsystem li.mars span {
-    background: #aa4200;
-    top: 0px;
-    left: 175px;
+.jupiter .planet {
+  width:128px;
+  height:128px;
+  background-image: url(http://www.waynedunkley.com/img/solar_system/jupiter.png);
+  animation: anti-spin 50s infinite linear;
 }
-ul.solarsystem li.asteroids_meteorids {
-    top: 155px;
-    left: 315px;
-    z-index: 1;
-    background: url(http://neography.com/experiment/circles/solarsystem/asteroids_meteorids.png) no-repeat 0 0;
-    width: 330px;
-    height: 330px;
-    -webkit-border-radius: 165px;
-    -moz-border-radius: 165px;
-    border-radius: 165px;
-    border: none;
+.jupiter .shadow {
+  animation: shadow 50s infinite linear;
 }
-ul.solarsystem li.jupiter {
-    width: 340px;
-    height: 340px;
-    -webkit-border-radius: 172px;
-    -moz-border-radius: 172px;
-    border-radius: 172px;
-    top: 150px;
-    left: 310px;
-    z-index: 95;
-}
-ul.solarsystem li.jupiter span {
-    background: #e0ae6f;
-    top: 67px;
-    left: 24px;
-}
-ul.solarsystem li.saturn {
-    width: 400px;
-    height: 400px;
-    -webkit-border-radius: 202px;
-    -moz-border-radius: 202px;
-    border-radius: 202px;
-    top: 120px;
-    left: 280px;
-    z-index: 94;
-}
-ul.solarsystem li.saturn span {
-    background: #dfd3a9;
-    top: 24px;
-    left: 300px;
-}
-ul.solarsystem li.saturn span.ring {
-    width: 12px;
-    height: 12px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-    background: none;
-    border: 2px solid #5a4e34;
-    left: -3px;
-    top: -3px;
-    -webkit-transform: skewY(50deg);
-    -moz-transform: skewY(50deg);
-    -o-transform: skewY(50deg);
-    transform: skewY(50deg);
-}
-ul.solarsystem li.uranus {
-    width: 460px;
-    height: 460px;
-    -webkit-border-radius: 232px;
-    -moz-border-radius: 232px;
-    border-radius: 232px;
-    top: 90px;
-    left: 250px;
-    z-index: 93;
-}
-ul.solarsystem li.uranus span {
-    background: #82b3d1;
-    top: 7px;
-    left: 300px;
-}
-ul.solarsystem li.neptune {
-    width: 520px;
-    height: 520px;
-    -webkit-border-radius: 262px;
-    -moz-border-radius: 262px;
-    border-radius: 262px;
-    top: 60px;
-    left: 220px;
-    z-index: 92;
-}
-ul.solarsystem li.neptune span {
-    background: #77c2ec;
-    top: 0px;
-    left: 200px;
-}
-ul.solarsystem li.pluto {
-    width: 580px;
-    height: 580px;
-    -webkit-border-radius: 292px;
-    -moz-border-radius: 292px;
-    border-radius: 292px;
-    top: 30px;
-    left: 190px;
-    z-index: 91;
-}
-ul.solarsystem li.pluto span {
-    background: #7c6a5c;
-    top: 79px;
-    left: 79px;
-}
-
-ul#descriptions {
-    position: absolute;
-    top: 150px;
-    right: 100px;
-    list-style: none;
-}
-ul#descriptions h2 {
-    cursor: pointer;
-    color: #386077;
-    -webkit-transition: all 0.15s ease-in;
-    -moz-transition: all 0.15s ease-in;
-    -o-transition: all 0.15s ease-in;
-    transition: all 0.15s ease-in;
-    font-size: 20px;
-    position: relative;
-    z-index: 101;
-    -webkit-transform: scale(1);
-    -moz-transform: scale(1);
-    -o-transform: scale(1);
-    transform: scale(1);
-	margin-bottom: -15px;
-}
-ul#descriptions h2:hover {
-   color: #aa4200;
-    -webkit-transform: scale(1.08);
-    -moz-transform: scale(1.08);
-    -o-transform: scale(1.08);
-    transform: scale(1.08);
-}
-ul#descriptions li p {
-    position: absolute;
-    left: -250px;
-    top: 0;
-    width: 200px;
-    display: inline;
-    opacity: 0;
-    visibility: hidden;
-    font-size: 13px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    -webkit-transition: all 0.3s ease-in;
-    -moz-transition: all 0.3s ease-in;
-    -o-transition: all 0.3s ease-in;
-    transition: all 0.3s ease-in;
-    background: #0f132c;
-    padding: 30px;
-    color: #767892;
-    line-height: 1.7;
-    z-index: 100;
-    border: 1px solid #1c203c;
-}
-ul#descriptions h2:hover+p {
-    visibility: visible;
-    opacity: 0.9;
-    left: -280px;
-}
-
-/* CSS3 Animations */
-ul.solarsystem li {
-    -webkit-animation-iteration-count:infinite;
-    -webkit-animation-timing-function:linear;
-    -webkit-animation-name:orbit;
-
-    -moz-animation-iteration-count:infinite;
-    -moz-animation-timing-function:linear;
-    -moz-animation-name:orbit;
-}
-ul.solarsystem li.earth span {
-    -webkit-animation-iteration-count:infinite;
-    -webkit-animation-timing-function:linear;
-    -webkit-animation-name:moon;
-
-    -moz-animation-iteration-count:infinite;
-    -moz-animation-timing-function:linear;
-    -moz-animation-name:moon;
-}
-ul.solarsystem li.mercury {-webkit-animation-duration:5s; -moz-animation-duration:5s;}
-ul.solarsystem li.venus {-webkit-animation-duration:8s; -moz-animation-duration:8s;}
-ul.solarsystem li.earth {-webkit-animation-duration:12s; -moz-animation-duration:12s;}
-ul.solarsystem li.earth span {-webkit-animation-duration:2s; -moz-animation-duration:2s;}
-ul.solarsystem li.mars {-webkit-animation-duration:20s; -moz-animation-duration:20s;}
-ul.solarsystem li.asteroids_meteorids {-webkit-animation-duration:50s; -moz-animation-duration:50s;}
-ul.solarsystem li.jupiter {-webkit-animation-duration:30s; -moz-animation-duration:30s;}
-ul.solarsystem li.saturn {-webkit-animation-duration:60s; -moz-animation-duration:60s;}
-ul.solarsystem li.uranus {-webkit-animation-duration:70s; -moz-animation-duration:70s;}
-ul.solarsystem li.neptune {-webkit-animation-duration:100s; -moz-animation-duration:100s;}
-ul.solarsystem li.pluto {-webkit-animation-duration:120s; -moz-animation-duration:120s;}
-
-@-webkit-keyframes orbit { from { -webkit-transform:rotate(0deg) } to { -webkit-transform:rotate(360deg) } }
-@-webkit-keyframes moon { from { -webkit-transform:rotate(0deg) } to { -webkit-transform:rotate(360deg) } }
-
-@-moz-keyframes orbit { from { -moz-transform:rotate(0deg) } to { -moz-transform:rotate(360deg) } }
-@-moz-keyframes moon { from { -moz-transform:rotate(0deg) } to { -moz-transform:rotate(360deg) } }
-
-/*ul.solarsystem:hover li {-webkit-animation-play-state: paused;} */

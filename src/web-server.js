@@ -61,8 +61,7 @@ class WebServer {
     })
 
     this.app.get('/listen', function (req, res) {
-      let guid = uuid.v1()
-      res.redirect(`/listen/${guid}`)
+      res.sendFile(`${contentPath}/listen.html`)
     })
   }
 }

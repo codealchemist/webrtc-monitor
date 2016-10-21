@@ -8,3 +8,12 @@ const stream = new Streamer({signal})
 
 signal.start()
 stream.start()
+
+//------------------------------------------------------------
+
+new Clipboard('#copy', {
+  text: function() {
+    console.log('-- set clipboard:', uuid)
+    return uuid
+  }
+})
