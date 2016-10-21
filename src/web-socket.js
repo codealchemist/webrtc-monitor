@@ -23,7 +23,7 @@ class WebSocket {
   start () {
     if (!this.hasExternalServer) this.server.listen(this.port);
     this.setEvents()
-    console.log(`-- WEB SOCKET started @ https://localhost:${this.port}`)
+    console.log(`-- WEB SOCKET started @ http://localhost:${this.port}`)
   }
 
   setEvents () {

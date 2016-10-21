@@ -10,8 +10,56 @@
     <h1>WebRTC Monitor</h1>
 
     <div class="center">
-      <a href="/stream" class="bg1">Stream</a>
-      <a href="/listen" class="bg2">Monitor</a>
+      <a href="/stream" class="button bg1">Stream</a>
+      <a href="/listen" class="button bg2">Monitor</a>
+    </div>
+
+    <div class="readme">
+      <h3>What's WebRTC Monitor?</h3>
+      <p>
+        It's a simple web app to monitor (watch and listen) a remote location in real time.
+      </p>
+
+      <h3>How does it work?</h3>
+      <p>
+        You open one web browser in <b>Stream</b> mode and press
+        <i class="fa fa-clipboard icon button"></i>
+        to copy the channel UUID to your clipboard.
+        <br>
+        Then open another web browser in <b>Monitor</b> mode and paste the channel UUID.
+        <br>
+        That's it. You should be able to get real time video from the streamer.
+        <br>
+        In other words, <b>WebRTC Monitor</b> leverages
+        <a href="https://webrtc.org" target="_blank">WebRTC</a>
+        technology to let you remotely connect to another browser, in peer to peer fashion,
+        and access its shared media stream, audio and video.
+      </p>
+
+      <h3>Privacy</h3>
+      <p>
+        When you start streaming a new
+        <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier" target="_blank">UUID</a>
+        is automatically generated for you.
+        <br>
+        It's not likely that someone would be able to get your UUID by brute forcing it,
+        because there too many possible combinations.
+        <br>
+        But, I wouldn't recommend using this tool to stream sensitive content.
+      </p>
+
+      <h3>Author</h3>
+      <p>
+        My name is <a href="http://albertomiranda.com.ar" target="_blank">Alberto Miranda</a>.
+        <br>
+        I'm a software developer from Buenos Aires, Argentina, who loves JavaScript and getting creative with frontend and backend technologies.
+        <br>
+        I hope you enjoy using <b>WebRTC Monitor</b>!
+        <br>
+        And if you do so, please, share it with your friends :)
+        <br>
+        Thanks!
+      </p>
     </div>
 
     <!-- google analytics -->

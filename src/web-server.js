@@ -32,7 +32,7 @@ class WebServer {
   start () {
     this.setRoutes()
     this.server.listen(this.port)
-    console.log(`-- WEB SERVER started @ https://localhost:${this.port}`)
+    console.log(`-- WEB SERVER started @ http://localhost:${this.port}`)
   }
 
   setRoutes () {

@@ -11,13 +11,27 @@ body {
   font-size: 12px;
   width: 100%;
   overflow: hidden;
+  line-height: 28px;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
   font-size: 28px;
+  margin: 15px;
 }
 
-a {
+h3 {
+  font-size: 20px;
+  color: #ccc;
+  margin: 28px 0 0 0;
+}
+
+p {
+  margin: 5px 0;
+}
+
+a.button {
   font-family: 'Ubuntu', sans-serif;
   display: block;
   width: 115px;
@@ -32,10 +46,28 @@ a {
   font-size: 20px;
   text-decoration: none;
   align-self: center;
+  opacity: 1;
+}
+
+a.button:hover {
+  opacity: 0.7;
+}
+
+a {
+ color: white;
+ background: #4E9CAF;
+ text-decoration: none;
+ padding: 4px;
+ border-radius: 2px 4px;
+ opacity: 0.7;
 }
 
 a:hover {
-  opacity: 0.7;
+  opacity: 1;
+}
+
+b {
+  color: #FF8944;
 }
 
 video {
@@ -57,7 +89,7 @@ video {
 
 .tr {
   position: absolute;
-  top: 25px;
+  top: 18px;
   right: 20px;
 }
 
@@ -100,4 +132,32 @@ video {
 
 .hidden {
   display: none;
+}
+
+.readme {
+  color: #888;
+  font-size: 18px;
+  background: #222;
+  padding: 0 20px 20px 20px;
+  margin: 20px 0 0 0;
+  border-top: 1px solid #888;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bottom-in {
+  animation-duration: 1s;
+  animation-name: bottom-in;
+}
+
+@keyframes bottom-in {
+  from {
+    bottom: -500px;
+  }
+
+  to {
+    bottom: 0px;
+  }
 }
