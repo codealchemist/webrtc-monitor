@@ -9,10 +9,24 @@
   <body>
     <h1>WebRTC Monitor</h1>
     <div class="buttons tr">
-      <!-- <span id="reloadStreamer" class="icon button" title="Reload Streamer">♻</span> -->
       <i id="reloadStreamer" class="fa fa-refresh icon button" title="Reload Streamer"></i>
       <i id="toggleAudio" class="fa fa-volume-up icon button" title="Toggle Audio"></i>
+      <i
+        id="disconnect"
+        class="fa fa-plug icon button hidden"
+        title="Disconnect"
+        onclick="disconnect()"
+      ></i>
     </div>
+
+    <input
+      id="room"
+      type="text"
+      class="hidden big-input rounded abs-center"
+      placeholder="Room"
+      onkeyup="connect(this, event)"
+      autofocus
+    />
 
     <video autoplay></video>
 
