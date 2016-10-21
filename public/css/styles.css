@@ -4,6 +4,10 @@
   outline: none;
 }
 
+body, html {
+  height: 100%;
+}
+
 body {
   background: black;
   color: #444;
@@ -138,11 +142,9 @@ video {
   font-size: 18px;
   background: #222;
   padding: 0 20px 20px 20px;
-  margin: 20px 0 0 0;
+  margin: 40px 0 0 0;
   border-top: 1px solid #888;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  height: calc(100vh - 200px);
 }
 
 .bottom-in {
