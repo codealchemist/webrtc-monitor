@@ -10,7 +10,6 @@ body {
   font-family: 'Ubuntu', sans-serif;
   font-size: 12px;
   width: 100%;
-  overflow: hidden;
   line-height: 28px;
   margin: 0;
   padding: 0;
@@ -141,7 +140,6 @@ video {
   padding: 0 20px 20px 20px;
   margin: 20px 0 0 0;
   border-top: 1px solid #888;
-  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
