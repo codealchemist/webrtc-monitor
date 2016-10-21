@@ -3,6 +3,7 @@ const path = require('path')
 const http = require('http')
 const https = require('https')
 const express = require('express')
+const uuid = require('node-uuid')
 
 class WebServer {
   constructor (params) {
@@ -46,12 +47,22 @@ class WebServer {
       res.sendFile(`${contentPath}/index.html`)
     })
 
-    this.app.get('/stream', function (req, res) {
+    this.app.get('/stream/:guid', function (req, res) {
       res.sendFile(`${contentPath}/stream.html`)
     })
 
-    this.app.get('/listen', function (req, res) {
+    this.app.get('/stream', function (req, res) {
+      let guid = uuid.v1()
+      res.redirect(`/stream/${guid}`)
+    })
+
+    this.app.get('/listen/:guid', function (req, res) {
       res.sendFile(`${contentPath}/listen.html`)
+    })
+
+    this.app.get('/listen', function (req, res) {
+      let guid = uuid.v1()
+      res.redirect(`/listen/${guid}`)
     })
   }
 }

@@ -16,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.14.0",
+    "node-uuid": "^1.4.7",
     "socket.io": "^1.5.0",
     "websocket-over-nodejs": "0.0.2"
   },
