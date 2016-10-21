@@ -9,6 +9,12 @@ class Listener {
     this.$toggleAudioBtn = $toggleAudioBtn
     this.stream = null
     this.pc = null
+
+    this.config = {
+      'iceServers': [{
+        'url': 'stun:stun.l.google.com:19302'
+      }]
+    }
   }
 
   start () {
@@ -87,7 +93,7 @@ class Listener {
 
   createPeerConnection() {
     try {
-      this.pc = new RTCPeerConnection(null);
+      this.pc = new RTCPeerConnection(this.config);
       this.pc.onicecandidate = (event) => this.onIceCandidate(event);
       this.pc.onaddstream = (evnet) => this.onRemoteStreamAdded(event);
       this.pc.onremovestream = (event) => this.onRemoteStreamRemoved(event);

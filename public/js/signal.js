@@ -24,19 +24,6 @@ class Signal {
     this.validEvents.map((eventName) => {
       this.listeners[eventName] = []
     })
-
-    this.config = {
-      'iceServers': [{
-        'url': 'stun:stun.l.google.com:19302'
-      }]
-    }
-
-    this.sdpConstraints = {
-      'mandatory': {
-        'OfferToReceiveAudio': true,
-        'OfferToReceiveVideo': true
-      }
-    }
   } // end constructor
 
   start () {

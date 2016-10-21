@@ -11,6 +11,12 @@ class Streamer {
       audio: true,
       video: true
     }
+
+    this.config = {
+      'iceServers': [{
+        'url': 'stun:stun.l.google.com:19302'
+      }]
+    }
   }
 
   start () {
@@ -111,7 +117,7 @@ class Streamer {
 
   createPeerConnection() {
     try {
-      this.pc = new RTCPeerConnection(null);
+      this.pc = new RTCPeerConnection(this.config);
       this.pc.onicecandidate = (event) => this.onLocalIceCandidate(event);
       // this.pc.onaddstream = (evnet) => this.onRemoteStreamAdded(event);
       // this.pc.onremovestream = (event) => this.onRemoteStreamRemoved(event);
