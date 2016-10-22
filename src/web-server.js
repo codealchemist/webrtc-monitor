@@ -12,6 +12,7 @@ class WebServer {
     this.port = port
     this.app = express()
     this.contentPath = path.join(__dirname, '../public')
+    if (process.env.dist) this.contentPath = path.join(__dirname, '../dist')
     this.credentials = credentials || {
       key: fs.readFileSync(`${__dirname}/../cert/privatekey.pem`, 'utf8'),
       cert: fs.readFileSync(`${__dirname}/../cert/certificate.pem`, 'utf8')
@@ -39,7 +40,6 @@ class WebServer {
 
   setStatic () {
     // use static
-    if (process.env.dist) this.contentPath = path.join(__dirname, '../dist')
     this.app.use(express.static(this.contentPath))
     console.log('-- static path:', this.contentPath)
   }
@@ -64,6 +64,7 @@ class WebServer {
     this.app.get('/stream/:guid', (req, res) => {
       let data = this.getMetas()
       data.title+=' - Stream Mode'
+      console.log('-- stream mode, data', data)
       res.render(`${contentPath}/stream.html`, data)
     })
 

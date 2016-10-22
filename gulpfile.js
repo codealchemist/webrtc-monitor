@@ -44,6 +44,10 @@ gulp.task('copy', function() {
   gulp.src(['public/img/*.{png,gif,jpg}'])
     .pipe(gulp.dest('dist/img'));
 
+  // partials
+  gulp.src(['public/partials/*'])
+    .pipe(gulp.dest('dist/partials'));
+
   // font-awesome
   return gulp.src(['public/lib/font-awesome/fonts/*'])
     .pipe(gulp.dest('dist/fonts'));
