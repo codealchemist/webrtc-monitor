@@ -13,7 +13,8 @@ stream.start()
 
 new Clipboard('#copy', {
   text: function() {
-    console.log('-- set clipboard:', uuid)
-    return uuid
+    let listenerUrl = location.href.replace('/stream/', '/listen/')
+    console.log('-- set clipboard:', listenerUrl)
+    return listenerUrl
   }
 })

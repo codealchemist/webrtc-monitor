@@ -4,6 +4,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>WebRTC Monitor</title>
 
+    <!-- open graph -->
+    <meta property="og:title" content="WebRTC Monitor" />
+    <meta property="og:site_name" content="Automatic Twitter Gallery"/>
+    <meta property="og:url" content="https://webrtcmonitor.herokuapp.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="https://webrtcmonitor.herokuapp.com/img/webrtc-logo.png" />
+    <meta property="og:description" content="Remote audio/video monitoring in the browser." />
+    <link rel="image_src" href="https://webrtcmonitor.herokuapp.com/img/webrtc-logo.png" />
+
+    <!-- twitter card -->
+    <meta name="twitter:card" content="photo">
+    <meta name="twitter:site" content="@albertomiranda">
+    <meta name="twitter:creator" content="@albertomiranda">
+    <meta name="twitter:title" content="WebRTC Monitor">
+    <meta name="twitter:description" content="Remote audio/video monitoring in the browser.">
+    <meta name="twitter:image" content="https://webrtcmonitor.herokuapp.com/img/webrtc-logo.png">
+    <meta name="twitter:url" content="https://webrtcmonitor.herokuapp.com">
+
     <!-- build:css /css/index.bundle.css -->
     <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
     <link href="/css/styles.css" rel="stylesheet" type="text/css" />
@@ -25,9 +43,10 @@
 
       <h3>How does it work?</h3>
       <p>
-        You open one web browser in <b>Stream</b> mode and press
+        You open one web browser in <b>Stream Mode</b> and press
         <i class="fa fa-clipboard icon button"></i>
-        to copy the channel UUID to your clipboard.
+        to copy the URL of the web page where you will be able to see your stream,
+        the <b>Monitor Mode</b>.
         <br>
         Then open another web browser in <b>Monitor</b> mode and paste the channel UUID.
         <br>
