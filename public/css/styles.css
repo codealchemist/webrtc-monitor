@@ -4,10 +4,6 @@
   outline: none;
 }
 
-body, html {
-  height: 100%;
-}
-
 body {
   background: black;
   color: #444;
@@ -144,20 +140,15 @@ video {
   padding: 0 20px 20px 20px;
   margin: 40px 0 0 0;
   border-top: 1px solid #888;
-  height: calc(100vh - 200px);
+  position: absolute;
+  bottom: 0;
 }
 
-.bottom-in {
-  animation-duration: 1s;
-  animation-name: bottom-in;
-}
-
-@keyframes bottom-in {
-  from {
-    bottom: -500px;
-  }
-
-  to {
-    bottom: 0px;
-  }
+@media only screen
+  and (min-width: 0px)
+  and (max-width: 820px)
+  {
+    .readme {
+      position: relative;
+    }
 }
