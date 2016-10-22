@@ -9,7 +9,6 @@ body {
   color: #444;
   font-family: 'Ubuntu', sans-serif;
   font-size: 12px;
-  width: 100%;
   line-height: 28px;
   margin: 0;
   padding: 0;
@@ -142,11 +141,14 @@ video {
   border-top: 1px solid #888;
   position: absolute;
   bottom: 0;
+  width: calc(100% - 40px);
 }
 
 @media only screen
-  and (min-width: 0px)
-  and (max-width: 820px)
+  and (min-width: 0)
+  and (max-width: 820px),
+  (min-height: 0)
+  and (max-height: 870px)
   {
     .readme {
       position: relative;
