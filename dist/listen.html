@@ -9,8 +9,24 @@
   <body>
     <h1>WebRTC Monitor</h1>
     <div class="buttons tr">
-      <i id="reloadStreamer" class="fa fa-refresh icon button" title="Reload Streamer"></i>
-      <i id="toggleAudio" class="fa fa-volume-up icon button" title="Toggle Audio"></i>
+      <i
+        id="reloadStreamer"
+        class="fa fa-refresh icon button"
+        title="Reload Streamer"
+        onclick="reloadStreamer()"
+      ></i>
+      <i
+        id="toggleAudio"
+        class="fa fa-volume-up icon button"
+        title="Toggle Audio"
+        onclick="toggleAudio()"
+      ></i>
+      <i
+        id="expand"
+        class="fa fa-expand icon button active"
+        title="Expand"
+        onclick="expand()"
+      ></i>
       <i
         id="disconnect"
         class="fa fa-plug icon button hidden"
@@ -28,7 +44,9 @@
       autofocus
     />
 
-    <video autoplay></video>
+    <div class="video-container">
+      <video autoplay></video>
+    </div>
 
     <!-- google analytics -->
     <script>

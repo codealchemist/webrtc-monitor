@@ -2,11 +2,9 @@
 
 class Listener {
   constructor (params) {
-    let {$video, signal, $reloadStreamerBtn, $toggleAudioBtn} = params || {}
+    let {$video, signal} = params || {}
     this.signal = signal
     this.$video = $video
-    this.$reloadStreamerBtn = $reloadStreamerBtn
-    this.$toggleAudioBtn = $toggleAudioBtn
     this.stream = null
     this.pc = null
 
@@ -28,29 +26,24 @@ class Listener {
       sendMessage('bye')
     }
 
-    this.$reloadStreamerBtn.addEventListener('click', () => {
-      this.signal.send({type: 'reload'})
-    })
-
-    this.$toggleAudioBtn.addEventListener('click', () => {
-      // disable audio
-      if (this.$toggleAudioBtn.className.match(/active/)) {
-        this.$toggleAudioBtn.className = this.$toggleAudioBtn.className.replace(' active', '')
-        this.signal.send({type: 'disable-audio'})
-        return
-      }
-
-      // enable audio
-      this.$toggleAudioBtn.className+=' active'
-      this.signal.send({type: 'enable-audio'})
-    })
-
     // listen to signaling
     this.signal.on('offer', (message) => this.onOffer(message))
     this.signal.on('answer', (message) => this.onAnswer(message))
     this.signal.on('candidate', (message) => this.onCandidate(message))
     this.signal.on('media', (message) => this.onMedia(message))
     this.signal.on('bye', (message) => this.onBye(message))
+  }
+
+  reloadStreamer () {
+    this.signal.send({type: 'reload'})
+  }
+
+  enableAudio () {
+    this.signal.send({type: 'enable-audio'})
+  }
+
+  disableAudio () {
+    this.signal.send({type: 'disable-audio'})
   }
 
   onOffer (message) {
